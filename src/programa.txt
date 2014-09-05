@@ -1,5 +1,1 @@
-int a;
-int _b; 
-if (a=b) a+b 
-else a-b
-c = a + 1_b;
+(2+3)

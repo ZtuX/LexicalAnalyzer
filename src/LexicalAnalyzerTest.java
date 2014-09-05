@@ -103,7 +103,7 @@ public class LexicalAnalyzerTest {
 	            		//Creamos un Token
 	                Token token;
 	                while((token=scanner.analyzer.nextToken())!=null){
-	                    System.out.println("Token encontrado estado de Aceptacion");
+	                    //System.out.println("Token encontrado!");
 	                }
 	                //Mostramos la tabla de Simbolos
 	                System.out.println("=============================");

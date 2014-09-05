@@ -44,7 +44,7 @@ public class Token {
      * Muestra el token encontrado.
      */
     public void showToken(){
-        System.out.println("Token found: " + this.getValue()+ " " + this.getType());
+        System.out.println("Token found: < '" + this.getValue()+ "' , '" + this.getType()+"' >");
     }
     
     /*

@@ -20,7 +20,7 @@ public class Automaton {
      */
     int transitions[][]=
     /**
-     * [letras] = a-dghjkm-rt-zA-Z_]
+     * [letras] = [a-dghjkm-rt-zA-Z_]
      * 0: [letras]
      * 1: punto(.)
      * 2: (
@@ -41,26 +41,39 @@ public class Automaton {
      * 17: Digito
      */
     {//  [letras]   .       (       )       ;       ,    EPSILON    e       l       s       i       f       +       -       *       /       =    DIGITO        
-        {   1   ,    7  ,   12  ,   12  ,   12  ,   12  ,   0   ,   6   ,   1   ,   1   ,   5   ,   1   ,   3   ,   3   ,   3   ,   3   ,   2   ,   4   },
-        {   1   ,   -1  ,   0   ,   0   ,   0   ,   0   ,   0   ,   1   ,   1   ,   1   ,   1   ,   1   ,   0   ,   0   ,   0   ,   0   ,   0   ,   1   },
-        {   0   ,   -1  ,   0   ,   -1  ,   -1  ,   -1  ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,  -1   ,  -1   ,  -1   ,  -1   ,  -1   ,   0   },
-        {   0   ,   -1  ,   0   ,   -1  ,   -1  ,  -1   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,  -1   ,  -1   ,  -1   ,  -1   ,  -1   ,   0   },
-        {   -1  ,    7  ,   -1  ,   -1  ,   -1  ,  -1   ,   -1  ,  -1   ,  -1   ,   -1  ,  -1   ,   -1  ,  -1   ,  -1   ,  -1   ,  -1   ,  -1   ,   4   },
-        {   1   ,   -1  ,   0   ,   0   ,   0   ,   0   ,   0   ,   1   ,   1   ,   1   ,   1   ,   8   ,   0   ,   0   ,   0   ,   0   ,   0   ,   1   },
-        {   1   ,   -1  ,   0   ,   0   ,   0   ,   0   ,   0   ,   1   ,   9   ,   1   ,   1   ,   1   ,   0   ,   0   ,   0   ,   0   ,   0   ,   1   },
+        {   1   ,    7  ,   12  ,   12  ,   12  ,   12  ,   13  ,   6   ,   1   ,   1   ,   5   ,   1   ,   3   ,   3   ,   3   ,   3   ,   2   ,   4   }, //q0
+        {   1   ,   -1  ,   13  ,   13  ,   13  ,  13   ,   13  ,   1   ,   1   ,   1   ,   1   ,   1   ,  13   ,   13  ,   13  ,   13  ,   13  ,   1   }, //q1
+        {   13  ,  13   ,   13  ,   13  ,   -1  ,   -1  ,   13  ,   13  ,  13   ,  13   ,  13   ,  13   ,  -1   ,  -1   ,  -1   ,  -1   ,  -1   ,   13  }, //q2
+        {   13  ,   -1  ,   13  ,   -1  ,   -1  ,  -1   ,   13  ,  13   ,   13  ,  13   ,  13   ,  13   ,  -1   ,  -1   ,  -1   ,  -1   ,  -1   ,   13  }, //q3
+        {   -1  ,    7  ,   -1  ,   -1  ,   13  ,  13   ,   13  ,  -1   ,  -1   ,   -1  ,  -1   ,   -1  ,  -1   ,  -1   ,  -1   ,  -1   ,  -1   ,   4   }, //q4
+        {   1   ,   -1  ,  13   ,  13   ,  13   ,  13   ,   13  ,   1   ,   1   ,   1   ,   1   ,   8   ,  13   ,  13   ,  13   ,  13   ,  13   ,   1   }, //q5
+        {   1   ,   -1  ,  13   ,  13   ,  13   ,  13   ,   13  ,   1   ,   9   ,   1   ,   1   ,   1   ,  13   ,  13   ,  13   ,  13   ,  13   ,   1   },
         {   -1  ,   -1  ,   0   ,   0   ,   0   ,   0   ,   0   ,  -1   ,  -1   ,   -1  ,  -1   ,   -1  ,   0   ,   0   ,   0   ,   0   ,   0   ,   7   },
-        {   1   ,   -1  ,   0   ,   0   ,   0   ,   0   ,   0   ,   1   ,   1   ,   1   ,   1   ,   1   ,   0   ,   0   ,   0   ,   0   ,   0   ,   1   },
+        {   1   ,   -1  ,  13   ,  13   ,  13   ,  13   ,   13  ,   1   ,   1   ,   1   ,   1   ,   1   ,  13   ,  13   ,  13   ,  13   ,  13   ,   1   }, //q8
         {   1   ,   -1  ,   0   ,   0   ,   0   ,   0   ,   0   ,   1   ,   1   ,   10  ,   1   ,   1   ,   0   ,   0   ,   0   ,   0   ,   0   ,   1   },
         {   1   ,   -1  ,   0   ,   0   ,   0   ,   0   ,   0   ,   11  ,   1   ,   1   ,   1   ,   1   ,   0   ,   0   ,   0   ,   0   ,   0   ,   1   },
         {   1   ,   -1  ,   0   ,   0   ,   0   ,   0   ,   0   ,   1   ,   1   ,   1   ,   1   ,   1   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   },
-        {   0   ,    0  ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   },
+        {   13  ,   13  ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   },
         {   0   ,    0  ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   } //ESTADO DE ACEPTACION DE TOKEN VALIDO
     };
     
     //TODO: Agregar tabla de acciones
     boolean go[][]={
-        {},
-        {}
+	 //  [letras]   .       (       )       ;       ,    EPSILON    e       l       s       i       f       +       -       *       /       =    DIGITO   
+    	{true	,true	,true	,true	,true	,true	,true	,true	,true	,true	,true	,true	,true	,true	,true	,true	,true	,true	}, //q0
+    	{true	,false	,false	,false	,false	,false	,false	,true	,true	,true	,true	,true	,false	,false	,false	,false	,false	,true	}, //q1
+    	{false	,false	,false	,false	,false	,false	,true	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	}, //q2
+    	{false	,false	,false	,false	,false	,false	,true	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	}, //q3
+    	{false	,true	,false	,false	,false	,false	,true	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,true	}, //q4
+    	{true	,false	,false	,false	,false	,false	,false	,true	,true	,true	,true	,true	,false	,false	,false	,false	,false	,true	}, //q5
+    	{true	,false	,false	,false	,false	,false	,false	,true	,true	,true	,true	,true	,false	,false	,false	,false	,false	,true	}, //q6
+    	{true	,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true},
+    	{true	,false	,false	,false	,false	,false	,false	,true	,true	,true	,true	,true	,false	,false	,false	,false	,false	,true	}, //q8
+    	{true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true},
+    	{true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true},
+    	{true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true},
+    	{false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	}, // q12
+    	{false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	}, // q13
     };
     
     /**

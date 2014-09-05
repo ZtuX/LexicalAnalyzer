@@ -55,7 +55,7 @@ public class LexicalAnalyzer {
         int nextState = 0; //Siguiente estado
         int priorState = 0; //Estado anterior
         lexeme = ""; //Variable para almacenar el lexema identificado
-        System.out.println("Caracter leeido: "+c);
+        System.out.println("[*] Caracter leido: '"+c+"'");
         /* Repetimos el ciclo mientras no estemos en el estado de aceptación.
          * Recordar que el estado de aceptación por default es 0
          */
@@ -64,21 +64,29 @@ public class LexicalAnalyzer {
         	priorState = currentState;
         	//Obtenemos el siguiente estado:
         	nextState = this.automaton.nextState(currentState, c);
+    		System.out.println("SE VA A LEER EL SIG CHAR[?]: "+automaton.go_to(currentState, c));
+
         	//Si el automata va a un siguiente estado...
         	if(automaton.go_to(currentState, c)){
+        		//TODO: Borras esta linea
+        		System.out.println("Estado actual: "+currentState);        		
         		//Concatenamos lo que hay en el lexema
         		lexeme+=c;
         		//Obtenemos el siguiente caracter
         		c = getC();
-        	}
-        	
+        	}        	
         	/*El estado actual será igual a siguiente estado
         	* Nos movemos de estado en el automata
         	*/
         	currentState = nextState;
         	
+        	System.out.println("Lexema: <"+lexeme+">");
+        	System.out.println("Siguiente estado es: "+nextState+"\n");
+        	
         	//Si c toma el valor de -1, entonces es EOF
-        	if(c==-1) { return null; }
+        	if(c==-1) { 
+        		System.out.println("END OF FILE");
+        		return null; }
         	
         	/*Si currentState (estado actual) es un estado de error,
         	 * nos salimos del análisis
@@ -99,7 +107,10 @@ public class LexicalAnalyzer {
         /*Si el tipo de token es un error D:
          * regresamos un valor de null
          */
-        if(tokenType == TokenType.ERROR){
+        /*if(tokenType == TokenType.ERROR){
+        	return null;
+        }*/
+        if(type.equals("ERROR")){
         	return null;
         }
         
@@ -202,6 +213,6 @@ public class LexicalAnalyzer {
      * Muestra un mensaje de Error.
      */
     public void error(){
-        System.out.println("Error found at line: "+" NUMERO DE LINEA "+" on \""+lexeme+"\"");
+        System.out.println("Error found at line: "+ automaton.getLine() +" on \""+lexeme+"\"");
     }
 }
