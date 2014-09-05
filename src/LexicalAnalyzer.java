@@ -55,7 +55,6 @@ public class LexicalAnalyzer {
         int nextState = 0; //Siguiente estado
         int priorState = 0; //Estado anterior
         lexeme = ""; //Variable para almacenar el lexema identificado
-        System.out.println("[*] Caracter leido: '"+c+"'");
         /* Repetimos el ciclo mientras no estemos en el estado de aceptación.
          * Recordar que el estado de aceptación por default es 0
          */
@@ -64,7 +63,9 @@ public class LexicalAnalyzer {
         	priorState = currentState;
         	//Obtenemos el siguiente estado:
         	nextState = this.automaton.nextState(currentState, c);
-    		System.out.println("SE VA A LEER EL SIG CHAR[?]: "+automaton.go_to(currentState, c));
+            System.out.println("[*] Caracter leido: '"+c+"'");
+            System.out.println("[+] Estado actual: "+currentState);
+    		System.out.println("SE PUEDE LEER EL CARACTER '"+c+"' DESDE EL ESTADO '"+currentState+"'[?]: "+automaton.go_to(currentState, c));
 
         	//Si el automata va a un siguiente estado...
         	if(automaton.go_to(currentState, c)){
@@ -84,7 +85,7 @@ public class LexicalAnalyzer {
         	System.out.println("Siguiente estado es: "+nextState+"\n");
         	
         	//Si c toma el valor de -1, entonces es EOF
-        	if(c==-1) { 
+        	if(c=='￿') { 
         		System.out.println("END OF FILE");
         		return null; }
         	

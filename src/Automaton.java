@@ -45,15 +45,15 @@ public class Automaton {
         {   1   ,   -1  ,   13  ,   13  ,   13  ,  13   ,   13  ,   1   ,   1   ,   1   ,   1   ,   1   ,  13   ,   13  ,   13  ,   13  ,   13  ,   1   }, //q1
         {   13  ,  13   ,   13  ,   13  ,   -1  ,   -1  ,   13  ,   13  ,  13   ,  13   ,  13   ,  13   ,  -1   ,  -1   ,  -1   ,  -1   ,  -1   ,   13  }, //q2
         {   13  ,   -1  ,   13  ,   -1  ,   -1  ,  -1   ,   13  ,  13   ,   13  ,  13   ,  13   ,  13   ,  -1   ,  -1   ,  -1   ,  -1   ,  -1   ,   13  }, //q3
-        {   -1  ,    7  ,   -1  ,   -1  ,   13  ,  13   ,   13  ,  -1   ,  -1   ,   -1  ,  -1   ,   -1  ,  -1   ,  -1   ,  -1   ,  -1   ,  -1   ,   4   }, //q4
+        {   -1  ,    7  ,   -1  ,   13  ,   13  ,  13   ,   13  ,  -1   ,  -1   ,   -1  ,  -1   ,   -1  ,  13   ,  -1   ,  -1   ,  -1   ,  -1   ,   4   }, //q4
         {   1   ,   -1  ,  13   ,  13   ,  13   ,  13   ,   13  ,   1   ,   1   ,   1   ,   1   ,   8   ,  13   ,  13   ,  13   ,  13   ,  13   ,   1   }, //q5
-        {   1   ,   -1  ,  13   ,  13   ,  13   ,  13   ,   13  ,   1   ,   9   ,   1   ,   1   ,   1   ,  13   ,  13   ,  13   ,  13   ,  13   ,   1   },
-        {   -1  ,   -1  ,   0   ,   0   ,   0   ,   0   ,   0   ,  -1   ,  -1   ,   -1  ,  -1   ,   -1  ,   0   ,   0   ,   0   ,   0   ,   0   ,   7   },
+        {   1   ,   -1  ,  13   ,  13   ,  13   ,  13   ,   13  ,   1   ,   9   ,   1   ,   1   ,   1   ,  13   ,  13   ,  13   ,  13   ,  13   ,   1   }, //q6
+        {   -1  ,   -1  ,  13   ,  13   ,  13   ,  13   ,  13   ,  -1   ,  -1   ,   -1  ,  -1   ,   -1  ,  13   ,  13   ,  13   ,  13   ,  13   ,   7   }, //q7
         {   1   ,   -1  ,  13   ,  13   ,  13   ,  13   ,   13  ,   1   ,   1   ,   1   ,   1   ,   1   ,  13   ,  13   ,  13   ,  13   ,  13   ,   1   }, //q8
-        {   1   ,   -1  ,   0   ,   0   ,   0   ,   0   ,   0   ,   1   ,   1   ,   10  ,   1   ,   1   ,   0   ,   0   ,   0   ,   0   ,   0   ,   1   },
-        {   1   ,   -1  ,   0   ,   0   ,   0   ,   0   ,   0   ,   11  ,   1   ,   1   ,   1   ,   1   ,   0   ,   0   ,   0   ,   0   ,   0   ,   1   },
-        {   1   ,   -1  ,   0   ,   0   ,   0   ,   0   ,   0   ,   1   ,   1   ,   1   ,   1   ,   1   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   },
-        {   13  ,   13  ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   },
+        {   1   ,   -1  ,  13   ,  13   ,  13   ,  13   ,  13   ,   1   ,   1   ,   10  ,   1   ,   1   ,  13   ,  13   ,  13   ,  13   ,  13   ,   1   }, //q9
+        {   1   ,   -1  ,  13   ,  13   ,  13   ,  13   ,  13   ,   11  ,   1   ,   1   ,   1   ,   1   ,  13   ,  13   ,  13   ,  13   ,  13   ,   1   }, //q10
+        {   1   ,   -1  ,  13   ,  13   ,  13   ,  13   ,  13   ,   1   ,   1   ,   1   ,   1   ,   1   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   }, //q11
+        {   13  ,   13  ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   ,  13   }, //q12
         {   0   ,    0  ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   } //ESTADO DE ACEPTACION DE TOKEN VALIDO
     };
     
@@ -62,16 +62,16 @@ public class Automaton {
 	 //  [letras]   .       (       )       ;       ,    EPSILON    e       l       s       i       f       +       -       *       /       =    DIGITO   
     	{true	,true	,true	,true	,true	,true	,true	,true	,true	,true	,true	,true	,true	,true	,true	,true	,true	,true	}, //q0
     	{true	,false	,false	,false	,false	,false	,false	,true	,true	,true	,true	,true	,false	,false	,false	,false	,false	,true	}, //q1
-    	{false	,false	,false	,false	,false	,false	,true	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	}, //q2
-    	{false	,false	,false	,false	,false	,false	,true	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	}, //q3
-    	{false	,true	,false	,false	,false	,false	,true	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,true	}, //q4
+    	{false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	}, //q2
+    	{false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	}, //q3
+    	{false	,true	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,true	}, //q4
     	{true	,false	,false	,false	,false	,false	,false	,true	,true	,true	,true	,true	,false	,false	,false	,false	,false	,true	}, //q5
     	{true	,false	,false	,false	,false	,false	,false	,true	,true	,true	,true	,true	,false	,false	,false	,false	,false	,true	}, //q6
-    	{true	,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true},
+    	{false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,true	}, //q7
     	{true	,false	,false	,false	,false	,false	,false	,true	,true	,true	,true	,true	,false	,false	,false	,false	,false	,true	}, //q8
-    	{true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true},
-    	{true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true},
-    	{true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true},
+    	{true	,false	,false	,false	,false	,false	,false	,true	,true	,true	,true	,true	,false	,false	,false	,false	,false	,false	}, //q9
+    	{true	,false	,false	,false	,false	,false	,false	,true	,true	,true	,true	,true	,false	,false	,false	,false	,false	,false	}, //q10
+    	{true	,false	,false	,false	,false	,false	,false	,true	,true	,true	,true	,true	,false	,false	,false	,false	,false	,false	}, //q11
     	{false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	}, // q12
     	{false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	,false	}, // q13
     };
@@ -100,8 +100,16 @@ public class Automaton {
             case 10:
                 if(c=='.') {
                     return 1; //Se leyó un punto
+                }else if(c=='e'){
+                	return 7;
                 }
-                if(c=='f'){
+                else if(c=='l'){
+                	return 8;
+                }
+                else if(c=='s'){
+                	return 9;
+                }
+                else if(c=='f'){
                     return 11;
                 }else if(Character.isDigit(c)){
                     return 17;
