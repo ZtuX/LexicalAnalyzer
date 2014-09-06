@@ -1,7 +1,8 @@
 jesus = 0.09;
-juan = 3;
+1juan = 3;
 
 if (juan=3)
     jesus = 0;
 else
     juan = 10;
+_b_+c=10;

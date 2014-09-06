@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.security.acl.LastOwnerException;
+import java.util.ArrayList;
 
 /**
  * Lexical Analyzer
@@ -15,6 +17,9 @@ public class LexicalAnalyzer {
     protected int currentState = 0; //Estado Actual
     protected String lexeme =""; //Lexema
     
+    protected int errorCounter = 0; //Contador de errores
+    protected boolean EOF_Flag = false; //Bandera que dice si ya se termino de lanalizar todo el archivo
+    protected ArrayList<String> errors = new ArrayList<String>(); //ArrayList que contendrá los errores encontrados
     
     //Getters and Setters
     public int getCurrentState() {
@@ -27,6 +32,23 @@ public class LexicalAnalyzer {
 
     public void setBufferedReader(BufferedReader bufferedReader) {
         this.bufferedReader = bufferedReader;
+    }
+    
+    /**
+     * Obtiene el numero de errores
+     * @return El numero de errores
+     */
+    public int getErrorCounter(){
+    	return this.errorCounter;
+    }
+    
+    /**
+     * Metodo que sirve para avisar si ya se terminó de leer
+     * todo el programa fuente.
+     * @return	True si se termino de leer, false en caso contrario.
+     */
+    public boolean getEOF_Flag(){
+    	return this.EOF_Flag;
     }
        
     /**
@@ -47,6 +69,21 @@ public class LexicalAnalyzer {
         c = getC();
     }
     
+    /**
+     * Regresa true si el caracter c es alguno de los simbolos
+     * {'+','-','*','/','(',')',';',',','=',' '}
+     * @param c
+     * @return True en caso de pertenecer al array, falso en caso contrario
+     */
+    public boolean isNewToken(Character c){
+    	char [] valid = {'+','-','*','/','(',')',';',',','=',' '};
+    	for(int i =0;i<valid.length;i++){
+    		if(c==valid[i]){
+    			return true;
+    		}
+    	}
+    	return false;
+    }
     
     public Token nextToken() throws IOException{
         Token token = null;
@@ -61,9 +98,26 @@ public class LexicalAnalyzer {
         while(currentState!=13){
         	/*En esta parte hacemos que cualquiera de esos casos
         	  se tome como espacio en blanco */
-        	if(c==' '||c=='\n'||c=='\t'||c=='\r'){
-        		c=' ';
+        	if(c==' '||c=='\n'||c=='\t'||c=='\r'){ c=' '; }
+        	
+        	/**
+        	 * En esta parte verificamos si estamos en un error
+        	 * leemos los siguientes caracteres hasta encontrarnos con un
+        	 * caracter del tipo 
+        	 * SPACE, ASSIGNMENT_OP, ARITHMETIC_OP,SPECIAL_OP
+        	 */
+        	if(currentState==-1){
+        		while(!isNewToken(c)){
+        			lexeme+=c;//Concatenamos lo que sería el lexema
+        			c = getC(); //Obtenemos el siguiente caracter
+        		}
+        		this.errors.add(error()); //Agregamos el error al ArrayList
+        		this.errorCounter++; //Incrementamos el contador de errores
+        		currentState=0; //Nos posicionamos en el estado 0 del automata
+        		lexeme=""; //limpiamos el lexema
         	}
+        	
+        	
         	//El estado anterior es igual al estado actual
         	priorState = currentState;
         	//Obtenemos el siguiente estado:
@@ -72,9 +126,7 @@ public class LexicalAnalyzer {
             //System.out.println("[+] Estado actual: "+currentState);
         	
         	//Si el automata va a un siguiente estado...
-        	if(automaton.go_to(currentState, c)){
-        		//TODO: Borras esta linea
-        		//System.out.println("Estado actual: "+currentState);        		
+        	if(automaton.go_to(currentState, c)){      		
         		//Concatenamos lo que hay en el lexema
         		lexeme+=c;
         		//Obtenemos el siguiente caracter
@@ -90,6 +142,7 @@ public class LexicalAnalyzer {
         	
         	//Si c toma el valor de -1, entonces es EOF
         	if(c=='￿') { 
+        		this.EOF_Flag = true;
         		System.out.println("END OF FILE");
         		return null; 
         	}
@@ -98,8 +151,8 @@ public class LexicalAnalyzer {
         	 * nos salimos del análisis
         	 */
         	if(currentState==-1){
-        		error(); //Mostramos el error
-        		return null; 
+        		//error(); //Mostramos el error
+        		//return null; 
         	}
         	
         }
@@ -218,7 +271,14 @@ public class LexicalAnalyzer {
     /**
      * Muestra un mensaje de Error.
      */
-    public void error(){
-        System.out.println("Error found at line: "+ automaton.getLine() +" on '"+lexeme+"'");
+    public String error(){
+        return "Error found at line: "+ automaton.getLine() +" on '"+lexeme+"'";
     }
+    
+    public void showErrors(){
+    	for(String error:errors){
+    		System.out.println(error);
+    	}
+    }
+    
 }

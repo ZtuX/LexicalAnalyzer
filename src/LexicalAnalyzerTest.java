@@ -100,16 +100,21 @@ public class LexicalAnalyzerTest {
                 //Se analiza el archivo
             	try{
             		LexicalAnalyzerTest scanner = new LexicalAnalyzerTest(fileName);
-	            		//Creamos un Token
+	            	//Creamos un Token
 	                Token token;
-	                while((token=scanner.analyzer.nextToken())!=null){
-	                    //System.out.println("Token encontrado!");
+	                while((scanner.analyzer.getEOF_Flag())!=true){
+	                	token=scanner.analyzer.nextToken();
+	                	//System.out.println("Token encontrado!");
 	                }
 	                //Mostramos la tabla de Simbolos
 	                System.out.println("=============================");
-	                System.out.println("Tabla de Simbolos");
+	                System.out.println("[+] Symbol Table");
 	                System.out.println("=============================");
 	                scanner.analyzer.symbolTable.showTable();
+	                System.out.println("=============================");
+	                System.out.println("[+] "+scanner.analyzer.getErrorCounter()+" error(s) found");
+	                System.out.println("=============================");
+	                scanner.analyzer.showErrors(); //Mostramos los errores
             	}catch (IOException e) {
 					System.out.println("[!]Error al leer el archivo "+args[1]);
 				}
