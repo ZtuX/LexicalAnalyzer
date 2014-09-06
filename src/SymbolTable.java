@@ -51,7 +51,7 @@ public class SymbolTable {
         return -1;
     }
     
-    //TODO: Cambiar por un HashSet
+    //TODO: Cambiar por la nueva estructura de datos que se va a implementar
     public int insertToken(Token t){
     	int i = 0;
     	for(Token token : list){
