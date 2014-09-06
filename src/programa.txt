@@ -1,1 +1,7 @@
-else test=0;
+jesus = 0.09;
+1juan = 3;
+
+if (juan=3)
+    jesus = 0;
+else
+    juan = 10;

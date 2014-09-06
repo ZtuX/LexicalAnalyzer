@@ -1,1 +1,7 @@
-if(jesus)
+jesus = 0.09;
+1juan = 3;
+
+if (juan=3)
+    jesus = 0;
+else
+    1juan = 10;

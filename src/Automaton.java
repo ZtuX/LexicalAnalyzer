@@ -114,7 +114,7 @@ public class Automaton {
                 }else if(Character.isDigit(c)){
                     return 17;
                 }else if(Character.isLetter(c) || c=='_'){
-                    return 1;
+                    return 0;
                 }
    
             default:
