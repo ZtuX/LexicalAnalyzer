@@ -59,18 +59,22 @@ public class LexicalAnalyzer {
          * Recordar que el estado de aceptación por default es 0
          */
         while(currentState!=13){
+        	/*En esta parte hacemos que cualquiera de esos casos
+        	  se tome como espacio en blanco */
+        	if(c==' '||c=='\n'||c=='\t'||c=='\r'){
+        		c=' ';
+        	}
         	//El estado anterior es igual al estado actual
         	priorState = currentState;
         	//Obtenemos el siguiente estado:
         	nextState = this.automaton.nextState(currentState, c);
-            System.out.println("[*] Caracter leido: '"+c+"'");
-            System.out.println("[+] Estado actual: "+currentState);
-    		System.out.println("SE PUEDE LEER EL CARACTER '"+c+"' DESDE EL ESTADO '"+currentState+"'[?]: "+automaton.go_to(currentState, c));
-
+            //System.out.println("[*] Caracter leido: '"+c+"'");
+            //System.out.println("[+] Estado actual: "+currentState);
+        	
         	//Si el automata va a un siguiente estado...
         	if(automaton.go_to(currentState, c)){
         		//TODO: Borras esta linea
-        		System.out.println("Estado actual: "+currentState);        		
+        		//System.out.println("Estado actual: "+currentState);        		
         		//Concatenamos lo que hay en el lexema
         		lexeme+=c;
         		//Obtenemos el siguiente caracter
@@ -81,13 +85,14 @@ public class LexicalAnalyzer {
         	*/
         	currentState = nextState;
         	
-        	System.out.println("Lexema: <"+lexeme+">");
-        	System.out.println("Siguiente estado es: "+nextState+"\n");
+        	//System.out.println("Lexema: <"+lexeme+">");
+        	//System.out.println("Siguiente estado es: "+nextState+"\n");
         	
         	//Si c toma el valor de -1, entonces es EOF
         	if(c=='￿') { 
         		System.out.println("END OF FILE");
-        		return null; }
+        		return null; 
+        	}
         	
         	/*Si currentState (estado actual) es un estado de error,
         	 * nos salimos del análisis
@@ -214,6 +219,6 @@ public class LexicalAnalyzer {
      * Muestra un mensaje de Error.
      */
     public void error(){
-        System.out.println("Error found at line: "+ automaton.getLine() +" on \""+lexeme+"\"");
+        System.out.println("Error found at line: "+ automaton.getLine() +" on '"+lexeme+"'");
     }
 }
