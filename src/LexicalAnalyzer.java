@@ -98,6 +98,9 @@ public class LexicalAnalyzer {
         while(currentState!=13){
         	/*En esta parte hacemos que cualquiera de esos casos
         	  se tome como espacio en blanco */
+        	if(c=='\n'){
+        		this.automaton.line++;
+        	}
         	if(c==' '||c=='\n'||c=='\t'||c=='\r'){ c=' '; }
         	
         	/**

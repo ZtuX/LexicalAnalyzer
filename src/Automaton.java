@@ -3,7 +3,7 @@
  * @author ZtuX
  */
 public class Automaton {
-    private int line = 0;
+    public int line = 1;
     
     /**
      * Obtiene la linea actual que se lee;
@@ -11,6 +11,14 @@ public class Automaton {
      */
     public int getLine() {
         return line;
+    }
+    
+    /**
+     * Cambia el atributo line
+     * @param line
+     */
+    public void setLine(int line){
+    	this.line=line;
     }
     
     
