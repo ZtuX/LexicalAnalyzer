@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 /**
  * Tabla de Simbolos.
- * @author ZtuX
+ * @author Hernández Alarcón Jesús Alfredo
  */
 public class SymbolTable {
     //Lista ligada para la tabla de simbolos

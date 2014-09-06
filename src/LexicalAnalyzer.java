@@ -6,19 +6,21 @@ import java.util.ArrayList;
 
 /**
  * Lexical Analyzer
- * @author ZtuX
+ * Clase del Analizador Léxico
+ * @author Hernández Alarcón Jesús Alfredo
  */
 public class LexicalAnalyzer {
     protected SymbolTable symbolTable; //Tabla de Simbolos
     protected Automaton automaton;//Automata
     protected BufferedReader bufferedReader; //Buffer
-    Character c ;
+    Character c ; //Para el caracter que se estará leyendo
     /**Inicialmente el estado esta en 0*/
     protected int currentState = 0; //Estado Actual
     protected String lexeme =""; //Lexema
     
     protected int errorCounter = 0; //Contador de errores
     protected boolean EOF_Flag = false; //Bandera que dice si ya se termino de lanalizar todo el archivo
+    
     protected ArrayList<String> errors = new ArrayList<String>(); //ArrayList que contendrá los errores encontrados
     
     //Getters and Setters
@@ -216,9 +218,11 @@ public class LexicalAnalyzer {
      */
     public String tokenType(int priorState){
     	switch(priorState){
-	        case 0:
-	        case 13:
-	            return "SPACE"; 
+	        /*Esta parte detecta los espacios como tokens
+	         * case 0:
+	         * case 13:
+	         *     return "SPACE";
+	         *     */ 
 	        case 1:
 	            return "ID";
 	        case 2:

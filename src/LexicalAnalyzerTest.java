@@ -5,8 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * Clase para probar el analizador léxico.
- * @author ZtuX
+ * Clase principal del Analizador Léxico.
+ * @author Hernández Alarcón Jesús Alfredo
  */
 public class LexicalAnalyzerTest {
     

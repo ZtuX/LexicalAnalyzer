@@ -1,6 +1,6 @@
 /**
  * Clase del Automata.
- * @author ZtuX
+ * @author Hernández Alarcón Jesús Alfredo
  */
 public class Automaton {
     public int line = 1;

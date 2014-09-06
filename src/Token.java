@@ -1,6 +1,6 @@
 /**
- *
- * @author ZtuX
+ * Clase Token
+ * @author Hernández Alarcón Jesús Alfredo
  */
 public class Token {
     private String value;
