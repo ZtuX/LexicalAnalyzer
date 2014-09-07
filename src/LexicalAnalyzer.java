@@ -126,9 +126,9 @@ public class LexicalAnalyzer {
         	priorState = currentState;
         	//Obtenemos el siguiente estado:
         	nextState = this.automaton.nextState(currentState, c);
-            //System.out.println("[*] Caracter leido: '"+c+"'");
+            //System.out.println("[*] Sig. Char: '"+c+"'");
             //System.out.println("[+] Estado actual: "+currentState);
-        	
+            //System.out.println("Puedo leer el char"+c+" en este estado[?]: "+automaton.go_to(currentState, c));
         	//Si el automata va a un siguiente estado...
         	if(automaton.go_to(currentState, c)){      		
         		//Concatenamos lo que hay en el lexema
@@ -141,7 +141,7 @@ public class LexicalAnalyzer {
         	*/
         	currentState = nextState;
         	
-        	//System.out.println("Lexema: <"+lexeme+">");
+        	//System.out.println("Lexema: '"+lexeme+"'");
         	//System.out.println("Siguiente estado es: "+nextState+"\n");
         	
         	//Si c toma el valor de -1, entonces es EOF
