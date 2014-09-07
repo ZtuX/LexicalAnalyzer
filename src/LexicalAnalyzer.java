@@ -166,7 +166,7 @@ public class LexicalAnalyzer {
         /*Identificamos el tipo de token*/
         //tokenType = tokenType(priorState,true);
         type = tokenType(priorState);
-        
+        //System.out.println("TOKEN DEL TIPO: "+type);
         /*Si el tipo de token es un error D:
          * regresamos un valor de null
          */
@@ -183,16 +183,20 @@ public class LexicalAnalyzer {
          */
         token = new Token(lexeme, type);
         int pos;
-        if(type.equals("ID")){
+        if(type.equals("ID") || type.equals("PR")){
         	if(lexeme.equals("if") || lexeme.equals("else")){
-        		token.setType("PR");
-        		token.showToken();
-        		pos = symbolTable.position(token);
-        		token.setValue(Integer.toString(pos));
+        		token.setType("PR"); //Cambiamos el tipo de token a PR
+        		symbolTable.insertToken(token); //SE INSERTA EL TOKEN
+        		token.showToken(); //SE MUESTRA EL TOKEN
+        		//pos = symbolTable.position(token);
+        		//System.out.println("POSICION: "+token.NO_TOKEN);
+        		//token.setValue(Integer.toString(pos));
         	}else{
+        		symbolTable.insertToken(token);
         		token.showToken();
-        		pos = symbolTable.insertToken(token);
-        		token = new Token(Integer.toString(pos),"ID");
+        		//pos = symbolTable.insertToken(token);
+        		//token.showToken(pos);
+        		//token = new Token(Integer.toString(pos),"ID");
         	}
         }else{
         	token.showToken();
@@ -233,9 +237,9 @@ public class LexicalAnalyzer {
 	        case 7:
 	        	return "FLOAT";
 	        case 8:
-	        	return "IF";
+	        	return "PR"; //IF
 	        case 11:
-	        	return "ELSE";
+	        	return "PR"; //ELSE
 	        case 12:
 	        	return "SPECIAL_OP";
 	        default:
@@ -283,7 +287,7 @@ public class LexicalAnalyzer {
     
     public void showErrors(){
     	//TODO: Cambiar nombre de funciones
-    	this.errors.show();
+    	this.errors.show(false);
     }
     
 }

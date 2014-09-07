@@ -15,8 +15,8 @@ public class SymbolTable {
     
     //Constructor
     public SymbolTable(){
-    	tokenList.insert(new Token("if", "PR"));
-    	tokenList.insert(new Token("else","PR"));
+    	//tokenList.insert(new Token("if", "PR"));
+    	//tokenList.insert(new Token("else","PR"));
     }
     
 
@@ -31,6 +31,7 @@ public class SymbolTable {
      * Muestra la tabla de simbolos.
      */ 
     public void showTable(){
+    	//Habilitamos mostrarlos de forma numerada con true
     	tokenList.show(true);
     }
     
@@ -57,15 +58,9 @@ public class SymbolTable {
      * @param t
      * @return La posición en la que se inserto el token
      */
-    public int insertToken(Token t){
-    	int i = 0;
-    	for(Token token : tokenList){
-    		if(token.getValue().equals(t.getValue()) && token.getType().equals(t.getType())){
-    			return i;
-    		}
-    		i++;
-    	}
-    	tokenList.insert(t);
-    	return i;
+    public void insertToken(Token t){
+    	//Buscamos que exista el token si ya existe no lo insertamos
+    	tokenList.insert(t,true);
+    	//tokenList.show();
     }
 }

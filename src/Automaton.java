@@ -173,6 +173,16 @@ public class Automaton {
         }
     }
     
+    /**
+     * Regresa un valor boolean en caso de que 
+     * se pueda leer el siguiente caracter. Por ejemplo si se
+     * tiene 2++3 y nos encontramos en el estado de el primer signo '+'
+     * no podemos leer un siguiente signo mas por lo que nos regresa un valor de
+     * false.
+     * @param state
+     * @param c
+     * @return True si se puede leer el siguiente caracter, false en caso contrario.
+     */
     public boolean go_to(int state,Character c){
         int value = codificaC(state, c); 
         if(c=='\n')
@@ -183,6 +193,10 @@ public class Automaton {
         return go[state][value];
     }
     
+    /**
+     * Muestra el error en la línea correspondiente.
+     * @param c EL caracter donde está el error.
+     */
     public void error(Character c){
         System.out.println("Símbolo de entrada no reconocido: "+c+ " en línea: "+ this.line);
     }

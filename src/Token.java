@@ -5,6 +5,7 @@
 public class Token {
     private String value;
     private String type;
+    public static int noTokens=-1; //El numero de tokens (Instancias de token)
     
     /**
      * Constructor del token
@@ -14,6 +15,7 @@ public class Token {
     public Token(String value, String type){
         this.value = value;
         this.type = type;
+        noTokens++;
     }
 
     /**
@@ -48,7 +50,8 @@ public class Token {
      * Muestra el token encontrado.
      */
     public void showToken(){
-        System.out.println("Token found: < '" + this.getValue()+ "' , '" + this.getType()+"' >");
+        //System.out.println("Token found: < '" + this.getValue()+ "' , '" + this.getType()+"' >");
+    	System.out.println("Token found: "+this);
     }
     
     /**
@@ -66,5 +69,19 @@ public class Token {
     public String toString() {
     	return ("<'"+this.getValue()+"','"+this.getType()+"'>");
     }
+    
+	@Override
+	public boolean equals(Object obj) {
+		if(obj==this) {
+			return true;
+		}
+		if(obj==null || obj.getClass()!=this.getClass()){
+			return false;
+		}
+		Token guest = (Token)obj;
+		return (this.getValue().equals(guest.getValue()) && this.getType().equals(guest.getType()));
+		
+	}
+	
 }
 

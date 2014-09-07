@@ -27,5 +27,14 @@ class Node <T>{
 	public void setNextNode(Node<T> nextNode){
 		this.nextNode = nextNode;
 	}
-
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Node<?>) {
+			if( ((Node<?>)obj).getData().equals(this.getData()) /*&& ((Node<?>)obj).getNextNode()==this.getNextNode()*/){
+				return true;
+			}
+		}
+		return false;
+	}
 }
