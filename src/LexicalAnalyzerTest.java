@@ -112,7 +112,7 @@ public class LexicalAnalyzerTest {
 	                System.out.println("=============================");
 	                scanner.analyzer.symbolTable.showTable();
 	                System.out.println("=============================");
-	                System.out.println("[+] "+scanner.analyzer.getErrorCounter()+" error(s) found");
+	                System.out.println("[!] "+scanner.analyzer.getErrorCounter()+" error(s) found");
 	                System.out.println("=============================");
 	                scanner.analyzer.showErrors(); //Mostramos los errores
             	}catch (IOException e) {

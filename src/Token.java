@@ -6,7 +6,11 @@ public class Token {
     private String value;
     private String type;
     
-    
+    /**
+     * Constructor del token
+     * @param value El valor del Token
+     * @param type	El tipo de Token
+     */
     public Token(String value, String type){
         this.value = value;
         this.type = type;
@@ -40,18 +44,27 @@ public class Token {
         this.type = type;
     }
     
-    /*
+    /**
      * Muestra el token encontrado.
      */
     public void showToken(){
         System.out.println("Token found: < '" + this.getValue()+ "' , '" + this.getType()+"' >");
     }
     
-    /*
+    /**
      * Muestra el token
      */
     public void showToken(int i){
         System.out.println(""+i+": "+this.getValue()+ " => " + this.getType());
     }    
+    
+    /**
+     * Forma de mostrar el token cuando se quiere imprimir
+     * en pantalla.
+     */
+    @Override
+    public String toString() {
+    	return ("<'"+this.getValue()+"','"+this.getType()+"'>");
+    }
 }
 

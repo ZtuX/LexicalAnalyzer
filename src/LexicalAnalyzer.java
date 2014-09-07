@@ -1,8 +1,5 @@
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.security.acl.LastOwnerException;
-import java.util.ArrayList;
 
 /**
  * Lexical Analyzer
@@ -22,7 +19,7 @@ public class LexicalAnalyzer {
     protected boolean EOF_Flag = false; //Bandera que dice si ya se termino de lanalizar todo el archivo
     
     //protected ArrayList<String> errors = new ArrayList<>(); //ArrayList que contendrá los errores encontrados
-    protected Stack<String> errors = new Stack<>(); 
+    protected Stack<String> errors = new Stack<>(); //Stack de errores
     
     //Getters and Setters
     public int getCurrentState() {
@@ -150,7 +147,7 @@ public class LexicalAnalyzer {
         	//Si c toma el valor de -1, entonces es EOF
         	if(c=='￿') { 
         		this.EOF_Flag = true;
-        		System.out.println("END OF FILE");
+        		//System.out.println("END OF FILE");
         		return null; 
         	}
         	
@@ -286,7 +283,7 @@ public class LexicalAnalyzer {
     
     public void showErrors(){
     	//TODO: Cambiar nombre de funciones
-    	this.errors.listar();
+    	this.errors.show(true);
     }
     
 }
