@@ -102,6 +102,9 @@ public class LexicalAnalyzerTest {
             		LexicalAnalyzerTest scanner = new LexicalAnalyzerTest(fileName);
 	            	//Creamos un Token
 	                Token token;
+	                System.out.println("=============================");
+	                System.out.println("[+] Tokens");
+	                System.out.println("=============================");
 	                while((scanner.analyzer.getEOF_Flag())!=true){
 	                	token=scanner.analyzer.nextToken();
 	                	//System.out.println("Token encontrado!");

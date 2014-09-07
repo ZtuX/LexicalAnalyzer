@@ -19,7 +19,7 @@ public class LexicalAnalyzer {
     protected boolean EOF_Flag = false; //Bandera que dice si ya se termino de lanalizar todo el archivo
     
     //protected ArrayList<String> errors = new ArrayList<>(); //ArrayList que contendrá los errores encontrados
-    protected Stack<String> errors = new Stack<>(); //Stack de errores
+    protected Queue<String> errors = new Queue<>(); //Stack de errores
     
     //Getters and Setters
     public int getCurrentState() {
@@ -115,7 +115,7 @@ public class LexicalAnalyzer {
         			c = getC(); //Obtenemos el siguiente caracter
         		}
         		//this.errors.add(error()); //Agregamos el error al ArrayList
-        		this.errors.push(error());
+        		this.errors.insert(error());
         		this.errorCounter++; //Incrementamos el contador de errores
         		currentState=0; //Nos posicionamos en el estado 0 del automata
         		lexeme=""; //limpiamos el lexema
@@ -283,7 +283,7 @@ public class LexicalAnalyzer {
     
     public void showErrors(){
     	//TODO: Cambiar nombre de funciones
-    	this.errors.show(true);
+    	this.errors.show();
     }
     
 }
