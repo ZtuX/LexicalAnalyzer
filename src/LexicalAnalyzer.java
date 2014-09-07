@@ -95,7 +95,7 @@ public class LexicalAnalyzer {
         /* Repetimos el ciclo mientras no estemos en el estado de aceptación.
          * Recordar que el estado de aceptación por default es 0
          */
-        while(currentState!=13){
+        while(currentState!=13){        	
         	/*En esta parte hacemos que cualquiera de esos casos
         	  se tome como espacio en blanco */
         	if(c=='\n'){
@@ -202,7 +202,7 @@ public class LexicalAnalyzer {
      * @return Un caracter, en caso de EOF -1
      * @throws IOException
      */
-    public Character getC() throws IOException{
+    public char getC() throws IOException{
         return (char)getBufferedReader().read();
     }
         
