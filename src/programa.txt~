@@ -1,9 +1,14 @@
-jesus = 0.09;
-1juan = 3;
-
-if (juan=3)
-    jesus = 0;
+if( a )
+	b= 34;
+	a = b+2*3;
+	c = a/2;
+	f = c*2.34;
 else
-    juan = 10;
-_b_+c=10;
-a+
+	a= 18*2;
+	c = (2+4) *15;
+	if(b)
+		b=2;
+	else
+		b=3;;
+
+

@@ -31,9 +31,10 @@ class Node <T>{
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Node<?>) {
-			if( ((Node<?>)obj).getData().equals(this.getData()) /*&& ((Node<?>)obj).getNextNode()==this.getNextNode()*/){
+			if( this.getData().equals(((Node<?>)obj).getData()) /*&& ((Node<?>)obj).getNextNode()==this.getNextNode()*/){
 				return true;
 			}
+			return false;
 		}
 		return false;
 	}

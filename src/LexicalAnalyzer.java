@@ -115,7 +115,7 @@ public class LexicalAnalyzer {
         			c = getC(); //Obtenemos el siguiente caracter
         		}
         		//this.errors.add(error()); //Agregamos el error al ArrayList
-        		this.errors.insert(error());
+        		this.errors.insert(error(),false);
         		this.errorCounter++; //Incrementamos el contador de errores
         		currentState=0; //Nos posicionamos en el estado 0 del automata
         		lexeme=""; //limpiamos el lexema
@@ -182,26 +182,18 @@ public class LexicalAnalyzer {
          * de no estar en la tabla de simbolos lo inserta y lo imprime.
          */
         token = new Token(lexeme, type);
-        int pos;
         if(type.equals("ID") || type.equals("PR")){
         	if(lexeme.equals("if") || lexeme.equals("else")){
         		token.setType("PR"); //Cambiamos el tipo de token a PR
         		symbolTable.insertToken(token); //SE INSERTA EL TOKEN
         		token.showToken(); //SE MUESTRA EL TOKEN
-        		//pos = symbolTable.position(token);
-        		//System.out.println("POSICION: "+token.NO_TOKEN);
-        		//token.setValue(Integer.toString(pos));
         	}else{
         		symbolTable.insertToken(token);
         		token.showToken();
-        		//pos = symbolTable.insertToken(token);
-        		//token.showToken(pos);
-        		//token = new Token(Integer.toString(pos),"ID");
         	}
         }else{
         	token.showToken();
         }
-        
         return token;
     }
     

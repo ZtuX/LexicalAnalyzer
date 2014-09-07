@@ -6,6 +6,7 @@ public class Token {
     private String value;
     private String type;
     public static int noTokens=-1; //El numero de tokens (Instancias de token)
+    public int noToken=0;
     
     /**
      * Constructor del token
@@ -44,6 +45,14 @@ public class Token {
      */
     public void setType(String type) {
         this.type = type;
+    }
+    
+    public int getNoToken(){
+    	return this.noToken;
+    }
+    
+    public void setNoToken(int noToken){
+    	this.noToken=noToken;
     }
     
     /**

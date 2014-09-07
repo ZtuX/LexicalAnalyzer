@@ -71,7 +71,7 @@ public class LexicalAnalyzerTest {
     public enum Flag{
         NO_FLAGS,         
         HELP, 
-        FILE 
+        FILE
     };
     
     /**
@@ -110,7 +110,6 @@ public class LexicalAnalyzerTest {
 	                System.out.println("=============================");
 	                while((scanner.analyzer.getEOF_Flag())!=true){
 	                	token=scanner.analyzer.nextToken();
-	                	//System.out.println("Token encontrado!");
 	                }
 	                //Mostramos la tabla de Simbolos
 	                System.out.println("=============================");

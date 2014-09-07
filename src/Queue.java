@@ -1,7 +1,10 @@
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
-class Queue<T> implements Iterable<T>,Iterator<T>{
+/**
+ * @author Hernández Alarcón Jesús Alfredo
+ * Estructura de datos implementada (Cola)
+ * @param <T> El tipo de dato 
+ */
+class Queue<T>{
 	private Node<T> H;
 	private Node<T> T;
 	
@@ -16,39 +19,47 @@ class Queue<T> implements Iterable<T>,Iterator<T>{
 		return(T==null);
 	}
 
-	public void insert(T data){
-		Node<T> q = new Node<T>(data,null);
-		if(isEmpty())
-			H=q;
-		else 
-			T.setNextNode(q);
-		T=q;
-		noNodes++;
+	/**
+	 * Inserta un nuevo nodo
+	 * @param data
+	 * @param t Si es True, no se insertan repetidos, en otro caso false
+	 */
+	public void insert(T data,boolean t){
+		if(t){
+			Node<T> temp = H;
+			Node<T> q = new Node<T>(data,null);
+			if(isEmpty()){
+				//System.out.println("INICIO DE LA COLA ");
+				H=q;
+			}
+			else{
+				while(temp!=null){
+					//Preguntamos si el dato es igual
+					if(temp.getData().equals(data)){
+						//System.out.println("YA ESTA EN LA COLA, NO SE AGREGA");
+						return;
+					}
+					temp = temp.getNextNode();
+				}
+				//System.out.println("NO ESTA EN LA COLA, SE VA A INSERTAR");
+				T.setNextNode(q);
+			}
+			T = q;
+			noNodes++;
+		}else{
+			Node<T> q = new Node<T>(data,null);
+			if(isEmpty())
+				H=q;
+			else 
+				T.setNextNode(q);
+			T=q;
+			noNodes++;
+		}
 	}
 	
-	public void insert(T data,boolean t){
-		Node<T> temp = H;
-		Node<T> q = new Node<T>(data,null);
-		if(isEmpty()){
-			//System.out.println("INICIO DE LA COLA ");
-			H=q;
-		}
-		else{
-			while(temp.getNextNode()!=null){
-				//Preguntamos si el dato es igual
-				if(temp.getData().equals(data)){
-					//System.out.println("YA ESTA EN LA COLA, NO SE AGREGA");
-					return;
-				}
-				temp = temp.getNextNode();
-			}
-			//System.out.println("NO ESTA EN LA COLA, SE VA A INSERTAR");
-			T.setNextNode(q);
-		}
-		T = q;
-		noNodes++;
-	}
-
+	/**
+	 * Elimina la cola
+	 */
 	public T delete(){
 		T aux = H.getData();
 		if(H==T)
@@ -84,26 +95,6 @@ class Queue<T> implements Iterable<T>,Iterator<T>{
 
 	}
 	
-	/**
-	 * Metodos implementados para poder usar 
-	 * for each
-	 */
-	@Override
-	public Iterator<T> iterator() {
-		return (Iterator<T>) this;
-	}
-	
-	public T next(){
-		if(temp==null){
-			throw new NoSuchElementException();
-		}
-		temp=temp.getNextNode();
-		return (T) temp;
-	}
-	
-	public boolean hasNext(){
-		return (temp!=null);
-	}
 	
 	/**
 	 * @return Regresa la longitud de la cola
