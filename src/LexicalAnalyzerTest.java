@@ -4,9 +4,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-/**
+/** 
  * Clase principal del Analizador Léxico.
  * @author Hernández Alarcón Jesús Alfredo
+ * @_ZtuX_
  */
 public class LexicalAnalyzerTest {
     
@@ -56,8 +57,7 @@ public class LexicalAnalyzerTest {
     public static void showDevelopers(){
         System.out.println("***********************************");
         System.out.println("Desarrollado por: ");
-        System.out.println("Gabriel Briceño Juan");
-        System.out.println("Hernández Alarcón Jesús Alfredo");
+        System.out.println("@_ZtuX_");
         System.out.println("***********************************");
         System.out.println("Use -h para mostrar la ayuda");
     }

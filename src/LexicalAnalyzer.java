@@ -144,8 +144,8 @@ public class LexicalAnalyzer {
         	//System.out.println("Lexema: '"+lexeme+"'");
         	//System.out.println("Siguiente estado es: "+nextState+"\n");
         	
-        	//Si c toma el valor de -1, entonces es EOF
-        	if(c=='￿') { 
+        	//Si c toma el valor de 65535, entonces es EOF
+        	if((int)c==65535) { 
         		this.EOF_Flag = true;
         		//System.out.println("END OF FILE");
         		return null; 
